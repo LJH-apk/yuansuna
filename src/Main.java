@@ -20,7 +20,8 @@ public class Main {
             System.exit(0);
         }
         //TODO 下面的关键运算代码交给你了
-
+        float number3 = ((number.number2-number.number1) / number.number1)*100;
+        System.out.println("你进步了：" + number3 + "%");
 
     }
 }
