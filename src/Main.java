@@ -10,20 +10,38 @@ public class Main {
         Number number = new Number();
         try{
             System.out.println("请输入上一次考试的分数");/** 提示语 */
-            number.number1 = input.nextFloat();/**   number.number1和number.number2是要计算的数字   */
+            number.setNumber1(input.nextFloat());/**   number.number1和number.number2是要计算的数字   */
             System.out.println("请输入这场考试的分数");/** 提示语 */
-            number.number2 = input.nextFloat();
+            number.setNumber2(input.nextFloat());
         }
         catch (InputMismatchException e){
             System.err.println("Warning:你输入的不是数字");
             System.out.println("处理完毕\n程序退出");
             System.exit(0);
         }
+        catch (IllegalArgumentException ex){
+            System.err.println("Warning:0不能做除数");
+            System.out.println("处理完毕\n程序退出");
+            System.exit(0);
+        }
 
         //TODO 下面的关键运算代码交给你了
+
     }
 }
 class Number{
-    public float number1;
-    public float number2;
+    private float number1;
+    private float number2;
+
+    public void setNumber1(float number1) {
+        if (number1 == 0){
+            throw new IllegalArgumentException();
+        }else{
+            this.number1 = number1;
+        }
+    }
+
+    public void setNumber2(float number2) {
+            this.number2 = number2;
+    }
 }
