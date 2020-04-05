@@ -26,6 +26,8 @@ public class Main {
         }
 
         //TODO 下面的关键运算代码交给你了
+        float number3 = (number.getNumber2()-number.getNumber2()) / number.getNumber1() * 100;
+        System.out.println("你进步了：" + number3 + "%");
 
     }
 }
@@ -43,5 +45,13 @@ class Number{
 
     public void setNumber2(float number2) {
             this.number2 = number2;
+    }
+
+    public float getNumber1() {
+        return number1;
+    }
+
+    public float getNumber2() {
+        return number2;
     }
 }
