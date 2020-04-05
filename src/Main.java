@@ -15,7 +15,7 @@ public class Main {
             number.number2 = input.nextFloat();
         }
         catch (InputMismatchException e){
-            System.out.println("Warning:你输入的不是数字");
+            System.err.println("Warning:你输入的不是数字");
             System.out.println("处理完毕\n程序退出");
             System.exit(0);
         }
