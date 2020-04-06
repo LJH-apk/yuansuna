@@ -9,7 +9,6 @@ public class Main {
         Scanner input = new Scanner(System.in);
         Number number = new Number();
         try{
-
             System.out.println("请输入上一次考试的分数");/** 提示语 */
             number.setNumber1(input.nextFloat());/**   number.number1和number.number2是要计算的数字   */
             System.out.println("请输入这场考试的分数");/** 提示语 */
