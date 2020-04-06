@@ -15,13 +15,13 @@ public class Main {
             number.setNumber2(input.nextFloat());
         }
         catch (InputMismatchException e){
-            System.err.println("Warning:你输入的不是数字");
+            System.err.println("Error:你输入的不是数字");
             System.out.println("处理完毕\n程序退出");
             System.exit(0);
         }
         catch (IllegalArgumentException ex){
-            System.err.println("Error:你输入了非法数字");
-            System.out.println("处理完毕\n程序退出");
+            System.err.println("Warning:你输入了非法数字");
+            System.out.println("错误处理完毕\n程序退出");
             System.exit(0);
         }
 
