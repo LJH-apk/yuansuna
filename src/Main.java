@@ -1,68 +1,121 @@
- /**
- * @author 刘佳航
- * @date 2020/4/5  19:39
- */
-import java.util.InputMismatchException;
+package main;
 import java.util.Scanner;
+/**
+ * @author 刘佳航
+ * @date 2020/4/6  14:40
+ */
 public class Main {
     public static void main(String[] args){
         Scanner input = new Scanner(System.in);
-        Number number = new Number();
-        try{
-            System.out.println("请输入上一次考试的分数");/* 提示语 */
-            number.setNumber1(input.nextFloat()); /*   number.number1和number.number2是要计算的数字   */
-            System.out.println("请输入这场考试的分数"); /* 提示语 */
-            number.setNumber2(input.nextFloat());
-        }
-        catch (InputMismatchException e){
-            System.err.println("Error:你输入的不是数字");
-            System.out.println("处理完毕\n程序退出");
-            System.exit(1);
-        }
-        catch (IllegalArgumentException ex){
-            System.err.println("Warning:你输入的是非法数字");
-            System.out.println("错误处理完毕\n程序退出");
-            System.exit(1);
+        String formula = input.next();
+        Yichang we = new Yichang();
+        for (int i=0;i>formula.length();i++){
+            char ch = formula.charAt(i);
+            if (ch == '+'){
+                Jia input1 = new Jia();
+                String number1 = formula.substring(0,i);
+                input1.setNumber1(we.Yichang1(number1));
+                String number2 = formula.substring(i+1,formula.length());
+                input1.setNumber2(we.Yichang2(number2));
+                System.out.println(input1.getNumber3());
+            }
         }
 
-        //TODO 下面的关键运算代码交给你了
-        float number3 = ((number.getNumber2()-number.getNumber1())/number.getNumber1())*100;
-        System.out.println("你进步了：" + number3 + "%");
     }
 }
-class Number{
-    private float number1;
-    private float number2;
-
-    public void setNumber1(float number1) {
-        if (number1 <= 0){
-            throw new IllegalArgumentException();
-        }else{
-            if(number1 > 150){
-                throw new IllegalArgumentException();
-            }else{
-                this.number1 = number1;
-            }
+abstract class Number{
+    double number1;
+    double number2;
+    double number3;
+    public abstract void setNumber1(double number1);
+    public abstract void setNumber2(double number2);
+    public abstract double getNumber3();
+}
+class Jia extends Number{
+    @Override
+    public void setNumber1(double number1){
+        this.number1 = number1;
+    }
+    @Override
+    public void setNumber2(double number2){
+        this.number2 = number2;
+    }
+    @Override
+    public double getNumber3(){
+        this.number3 = this.number2 + this.number1;
+        return this.number3;
+    }
+}
+class Jian extends Number{
+    @Override
+    public void setNumber1(double number1){
+        this.number1 = number1;
+    }
+    @Override
+    public void setNumber2(double number2){
+        this.number2 = number2;
+    }
+    @Override
+    public double getNumber3(){
+        double number3 = this.number1 + this.number2;
+        return number3;
+    }
+}
+class Cheng extends Number{
+    @Override
+    public void setNumber1(double nunber1){
+        this.number1 = number2;
+    }
+    @Override
+    public void setNumber2(double number2){
+        this.number2 = number2;
+    }
+    @Override
+    public double getNumber3(){
+        double number3 = this.number1 * this.number2;
+        return number3;
+    }
+}
+class Chu extends Number{
+    @Override
+    public void setNumber1(double number1){
+        this.number1 = number1;
+    }
+    @Override
+    public void setNumber2(double number2){
+        this.number2 = number2;
+    }
+    @Override
+    public double getNumber3(){
+        double number3 = this.number1 / this.number2;
+        return number3;
+    }
+}
+class Yichang{
+    public double num1;
+    public double num2;
+    public double Yichang1(String number1){
+        try{
+            num1 = Float.parseFloat(number1);
         }
+        catch (NumberFormatException number){
+            System.err.println("Error:你输入的不是数字");
+            System.out.println("处理完毕\n程序退出");
+            System.exit(0);
+        }
+        double numbe1 = num1;
+        return numbe1;
     }
-
-    public void setNumber2(float number2) {
-            if (number2 <= 0){
-                throw new IllegalArgumentException();
-            }else{
-                if (number2 > 150){
-                    throw new IllegalArgumentException();
-                }else{
-                    this.number2 = number2;
-                }
-            }
-    }
-
-    public float getNumber1() {
-        return number1;
-    }
-
-    public float getNumber2() {
-        return number2;
+    public double Yichang2(String number2){
+        try{
+            num2 = Float.parseFloat(number2);
+        }
+        catch (NumberFormatException nu){
+            System.out.println("Error:你输入的不是数字");
+            System.out.println("处理完毕\n程序退出");
+            System.exit(0);
+        }
+        double numb2 = num2;
+        return numb2;
     }
 }
