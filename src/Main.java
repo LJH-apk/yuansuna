@@ -1,4 +1,4 @@
-/**
+ /**
  * @author 刘佳航
  * @date 2020/4/5  19:39
  */
@@ -9,20 +9,20 @@ public class Main {
         Scanner input = new Scanner(System.in);
         Number number = new Number();
         try{
-            System.out.println("请输入上一次考试的分数");/** 提示语 */
-            number.setNumber1(input.nextFloat());/**   number.number1和number.number2是要计算的数字   */
-            System.out.println("请输入这场考试的分数");/** 提示语 */
+            System.out.println("请输入上一次考试的分数");/* 提示语 */
+            number.setNumber1(input.nextFloat()); /*   number.number1和number.number2是要计算的数字   */
+            System.out.println("请输入这场考试的分数"); /* 提示语 */
             number.setNumber2(input.nextFloat());
         }
         catch (InputMismatchException e){
             System.err.println("Error:你输入的不是数字");
             System.out.println("处理完毕\n程序退出");
-            System.exit(0);
+            System.exit(1);
         }
         catch (IllegalArgumentException ex){
-            System.err.println("Warning:你输入了非法数字");
+            System.err.println("Warning:你输入的是非法数字");
             System.out.println("错误处理完毕\n程序退出");
-            System.exit(0);
+            System.exit(1);
         }
 
         //TODO 下面的关键运算代码交给你了
@@ -38,7 +38,11 @@ class Number{
         if (number1 <= 0){
             throw new IllegalArgumentException();
         }else{
-            this.number1 = number1;
+            if(number1 > 150){
+                throw new IllegalArgumentException();
+            }else{
+                this.number1 = number1;
+            }
         }
     }
 
@@ -46,7 +50,11 @@ class Number{
             if (number2 <= 0){
                 throw new IllegalArgumentException();
             }else{
-                this.number2 = number2;
+                if (number2 > 150){
+                    throw new IllegalArgumentException();
+                }else{
+                    this.number2 = number2;
+                }
             }
     }
 
